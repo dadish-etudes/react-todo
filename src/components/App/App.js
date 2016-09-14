@@ -12,6 +12,7 @@ import emptyFunction from 'fbjs/lib/emptyFunction';
 import s from './App.css';
 import Header from '../Header';
 import TodoHeader from '../TodoHeader';
+import TodoFooter from '../TodoFooter';
 import MainSection from '../MainSection';
 import Footer from '../Footer';
 import TodoStore from '../../stores/TodoStore';
@@ -72,6 +73,7 @@ class App extends Component {
           allTodos={this.state.allTodos}
           areAllComplete={this.state.areAllComplete}
         />
+        <TodoFooter />
         <Footer />
       </div>
     );
