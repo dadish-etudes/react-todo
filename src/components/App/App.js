@@ -11,20 +11,24 @@ import React, { Component, PropTypes } from 'react';
 import emptyFunction from 'fbjs/lib/emptyFunction';
 import s from './App.css';
 import Header from '../Header';
-import Feedback from '../Feedback';
+import TodoHeader from '../TodoHeader';
+import MainSection from '../MainSection';
 import Footer from '../Footer';
+import TodoStore from '../../stores/TodoStore';
+
+function getTodoState() {
+  return {
+    allTodos : TodoStore.getAll()
+  };
+}
 
 class App extends Component {
 
-  static propTypes = {
-    context: PropTypes.shape({
-      insertCss: PropTypes.func,
-      setTitle: PropTypes.func,
-      setMeta: PropTypes.func,
-    }),
-    children: PropTypes.element.isRequired,
-    error: PropTypes.object,
-  };
+  constructor(props) {
+    super(props);
+    this.state = getTodoState();
+    this._onChange = this._onChange.bind(this);
+  }
 
   static childContextTypes = {
     insertCss: PropTypes.func.isRequired,
@@ -44,21 +48,33 @@ class App extends Component {
   componentWillMount() {
     const { insertCss } = this.props.context;
     this.removeCss = insertCss(s);
+    TodoStore.addChangeListener(this._onChange);
   }
 
   componentWillUnmount() {
     this.removeCss();
+    TodoStore.removeChangeListener(this._onChange);
+  }
+
+  _onChange () {
+    this.setState(getTodoState());
   }
 
   render() {
-    return !this.props.error ? (
+    
+    if (this.props.error) return this.props.children;
+
+    return (
       <div>
         <Header />
-        {this.props.children}
-        <Feedback />
+        <TodoHeader />
+        <MainSection 
+          allTodos={this.state.allTodos}
+          areAllComplete={this.state.areAllComplete}
+        />
         <Footer />
       </div>
-    ) : this.props.children;
+    );
   }
 
 }
