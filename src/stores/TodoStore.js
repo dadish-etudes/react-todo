@@ -6,15 +6,6 @@ const CHANGE_EVENT = 'change';
 
 const _todos = {};
 
-// for test purposes add a todo
-let testTodo = {
-	id: Date.now,
-	text: 'This is a test todo',
-	complete: false	
-}
-
-_todos[testTodo.id] = testTodo;
-
 function create(text) {
 	let id = Date.now();
 	_todos[id] = {
