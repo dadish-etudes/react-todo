@@ -12,14 +12,14 @@ class TodoHeader extends Component {
 
 	render () {
 		return(
-			<header id="header" className={s.root}>
+			<section className={s.root}>
 				<h1>todos</h1>
 				<TodoTextInput
 					id="new-todo"
 					placeholder="What needs to be done?"
 					onSave={this._onSave}
 				/>
-			</header>
+			</section>
 		);
 	}
 
