@@ -8,6 +8,7 @@
  */
 
 import React, {Component} from 'react';
+import classNames from 'classnames';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './MainSection.css';
 import TodoItem from './TodoItem';
@@ -24,7 +25,7 @@ class MainSection extends Component {
 
 	  return (
 	    <section className={s.root}>
-	    	<ul className={s.ul}>
+	    	<ul className={todos.length ? classNames(s.ul, s.ulBorder) : s.ul}>
 	    		{todos}	
 	    	</ul>
 	    </section>

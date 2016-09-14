@@ -26,6 +26,9 @@
 	list-style: none;
 	margin: 0;
 	padding: 0;
+}
+
+.ulBorder{
 	border: var(--todo-list-seperator);
 	border-bottom: none;
 }
