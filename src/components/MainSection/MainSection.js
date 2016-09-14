@@ -25,7 +25,7 @@ class MainSection extends Component {
 
 	  return (
 	    <section className={s.root}>
-	    	<ul className={todos.length ? classNames(s.ul, s.ulBorder) : s.ul}>
+	    	<ul className={s.ul}>
 	    		{todos}	
 	    	</ul>
 	    </section>

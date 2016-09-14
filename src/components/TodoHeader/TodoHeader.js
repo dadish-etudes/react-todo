@@ -13,7 +13,6 @@ class TodoHeader extends Component {
 	render () {
 		return(
 			<section className={s.root}>
-				<h1>todos</h1>
 				<TodoTextInput
 					id="new-todo"
 					placeholder="What needs to be done?"

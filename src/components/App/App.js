@@ -11,25 +11,10 @@ import React, { Component, PropTypes } from 'react';
 import emptyFunction from 'fbjs/lib/emptyFunction';
 import s from './App.css';
 import Header from '../Header';
-import TodoHeader from '../TodoHeader';
-import TodoFooter from '../TodoFooter';
-import MainSection from '../MainSection';
 import Footer from '../Footer';
-import TodoStore from '../../stores/TodoStore';
-
-function getTodoState() {
-  return {
-    allTodos : TodoStore.getAll()
-  };
-}
+import TodoApp from '../TodoApp';
 
 class App extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = getTodoState();
-    this._onChange = this._onChange.bind(this);
-  }
 
   static childContextTypes = {
     insertCss: PropTypes.func.isRequired,
@@ -49,31 +34,19 @@ class App extends Component {
   componentWillMount() {
     const { insertCss } = this.props.context;
     this.removeCss = insertCss(s);
-    TodoStore.addChangeListener(this._onChange);
   }
 
   componentWillUnmount() {
     this.removeCss();
-    TodoStore.removeChangeListener(this._onChange);
-  }
-
-  _onChange () {
-    this.setState(getTodoState());
   }
 
   render() {
-    
     if (this.props.error) return this.props.children;
 
     return (
       <div>
         <Header />
-        <TodoHeader />
-        <MainSection 
-          allTodos={this.state.allTodos}
-          areAllComplete={this.state.areAllComplete}
-        />
-        <TodoFooter />
+        <TodoApp />
         <Footer />
       </div>
     );

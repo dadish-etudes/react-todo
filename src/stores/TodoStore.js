@@ -4,19 +4,29 @@ import TodoConstants from '../constants/TodoConstants';
 
 const CHANGE_EVENT = 'change';
 
-const _todos = {};
+const _todos = [];
 
 function create(text) {
 	let id = Date.now();
-	_todos[id] = {
+	_todos.push({
 		id: id,
 		text: text,
 		complete: false
-	};
+	});
 }
 
 function destroy(id) {
-	delete _todos[id];
+	let found, index;
+	found = _todos.find(function (item, i) {
+		if(item.id === id) {
+			index = i;
+			return true;
+		}
+		return false;
+	});
+	if (!!found) {
+		_todos.splice(index, 1);
+	}
 }
 
 class TodoStore extends EventEmitter {

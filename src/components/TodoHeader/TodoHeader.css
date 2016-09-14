@@ -11,8 +11,6 @@
 
 .root {
 	text-align : center;
-	max-width : var(--max-content-width);
-	margin: auto;
 }
 
 .input{

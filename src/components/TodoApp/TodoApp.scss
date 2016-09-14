@@ -10,27 +10,7 @@
 @import '../variables.scss';
 
 .root {
-	display : flex;
-	flex-direction: row;
-	justify-content: space-between;
 	padding: 0.5rem;
-	border: $todo-list-seperator;
-	border-top: none;
-}
-
-.left {
-	color: $clr-green;
-}
-
-.filter{
-	
-}
-
-.filterItem{
-	display: inline-block;
-	margin: 0rem 0.5rem;
-}
-
-.delete {
-	
+	max-width: $max-content-width;
+	margin: auto;
 }

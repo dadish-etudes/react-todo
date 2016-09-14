@@ -18,14 +18,12 @@ function Header() {
   return (
     <div className={s.root}>
       <div className={s.container}>
-        <Navigation className={s.nav} />
         <Link className={s.brand} to="/">
           <img src={logoUrl} width="38" height="38" alt="React" />
           <span className={s.brandTxt}>DadishLabs</span>
         </Link>
         <div className={s.banner}>
-          <h1 className={s.bannerTitle}>TODO</h1>
-          <p className={s.bannerDesc}>A simple TODO app</p>
+          <h1 className={s.bannerTitle}>todos</h1>
         </div>
       </div>
     </div>
