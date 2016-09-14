@@ -4,7 +4,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './TodoItem.css';
+import s from './TodoItem.scss';
 import TodoActions from '../../actions/TodoActions';
 
 class TodoItem extends Component {
@@ -29,7 +29,7 @@ class TodoItem extends Component {
 				<label>
 					{todo.text}
 				</label>
-				<button className={s.button} onClick={this._onDestroyClick}>Delete</button>
+				<button className={s.button} onClick={this._onDestroyClick}>del</button>
 			</li>	
 		);
 	}
