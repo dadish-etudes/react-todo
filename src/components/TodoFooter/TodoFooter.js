@@ -5,6 +5,7 @@
 import React, { Component } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './TodoFooter.scss';
+import classNames from 'classnames';
 
 class TodoFooter extends Component {
 
@@ -17,7 +18,7 @@ class TodoFooter extends Component {
 	render () {
 		let leftItemsCount = this.leftItemsCount();
 		return(
-			<section className={s.root}>
+			<section className={leftItemsCount ? s.root : s.hidden}>
 				<div className={s.left}>
 					{leftItemsCount} item{leftItemsCount === 1 ? '' : 's'} left
 				</div>
