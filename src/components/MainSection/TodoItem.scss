@@ -56,12 +56,13 @@
 	fill: $clr-silver;
 	&:hover{
 		fill: $clr-red - #222;
+		cursor: pointer;
 	}
-	&:hover{
+	&:active{
 		fill: $clr-red - #333;
 	}
 	// show only when parent element is hovered
-	display: invisible;
+	display: none;
 }
 
 .root{
