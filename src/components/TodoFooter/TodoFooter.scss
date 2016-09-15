@@ -9,6 +9,18 @@
 
 @import '../variables.scss';
 
+@mixin footer-button{
+	border-bottom: 3px solid $clr-white;
+	&:hover{
+		cursor: pointer;
+		border-bottom: 2px solid $clr-green;
+	}
+	&:active{
+		border-bottom: 2px solid $clr-green;
+		color: $clr-green;
+	}
+}
+
 .root {
 	display : flex;
 	flex-direction: row;
@@ -31,10 +43,11 @@
 }
 
 .filterItem{
+	@include footer-button;
 	display: inline-block;
 	margin: 0rem 0.5rem;
 }
 
 .delete {
-	
+	@include footer-button;
 }
