@@ -21,6 +21,23 @@ class TodoActions {
 		});
 	}
 
+	markComplete (id) {
+		this.update(id, 'complete', true);
+	}
+
+	unmarkComplete (id) {
+		this.update(id, 'complete', false);
+	}
+
+	update (id, property, value) {
+		AppDispatcher.handleViewAction({
+			actionType: TodoConstants.TODO_UPDATE,
+			id: id,
+			property: property,
+			value: value
+		});
+	}
+
 }
 
 export default new TodoActions();

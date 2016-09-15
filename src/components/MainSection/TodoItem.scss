@@ -15,22 +15,63 @@
   /**
    * Flex settings
    */
-  align-items : center;
-  display: flex;
-  flex-direction : row;
-  justify-content: space-between;
+//  align-items : center;
+//  display: flex;
+//  flex-direction : row;
+//  justify-content: space-between;
 }
 
-.button{
-	font-size: 1rem;
-	box-shadow: none;
-	border: 1px solid $clr-navy;
-	background-color: $clr-gray;
-	color: $clr-white;
-	border-radius: 3px;
-	padding : 0rem 0.5rem;
+.txt{
+	display: inline-block;
+	margin-left: 1rem;
+}
+
+.icon{
+	width: 24px;
+	height: 24px;
 	&:hover{
-		background-color: $clr-red - #222;
+		fill: $clr-silver - #111;
 		cursor: pointer;
 	}
+	&:active{
+		fill: $clr-green + #222;
+	}
+}
+
+.checkBox{
+	fill: $clr-silver;
+}
+
+.check{
+	fill: $clr-green - #222;
+	&:hover{
+		fill: $clr-green - #222;
+	}
+}
+
+.delete{
+	width: 20px;
+	height: 20px;
+	float: right;
+	fill: $clr-silver;
+	&:hover{
+		fill: $clr-red - #222;
+	}
+	&:hover{
+		fill: $clr-red - #333;
+	}
+	// show only when parent element is hovered
+	display: invisible;
+}
+
+.root{
+	&:hover{
+		.delete{
+			display: block;
+		}
+	}
+}
+
+.hidden{
+	display: none;
 }

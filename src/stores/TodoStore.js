@@ -29,6 +29,11 @@ function destroy(id) {
 	}
 }
 
+function update(id, property, value) {
+	let item = _todos.find(item => item.id === id);
+	item[property] = value;
+}
+
 class TodoStore extends EventEmitter {
 
 	constructor () {
@@ -55,10 +60,10 @@ class TodoStore extends EventEmitter {
 
 	changeEventHandler (payload) {
 		let action = payload.action;
-		let text;
 		switch(action.actionType) {
+			
 			case TodoConstants.TODO_CREATE:
-				text = action.text.trim();
+				let text = action.text.trim();
 				if(text !== '') {
 					create(text);
 					this.emitChange();
@@ -69,6 +74,12 @@ class TodoStore extends EventEmitter {
 				destroy(action.id);
 				this.emitChange();
 				break;
+
+			case TodoConstants.TODO_UPDATE:
+				update(action.id, action.property, action.value);
+				this.emitChange();
+				break;
+
 		}
 
 		return true;
