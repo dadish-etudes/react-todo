@@ -20,6 +20,13 @@
 	}	
 }
 
+.iconChecked{
+	fill: $clr-green - #222;
+	&:hover{
+		fill: $clr-green - #222;
+	}	
+}
+
 .input{
 	font-size: 1rem;
 	border: none;

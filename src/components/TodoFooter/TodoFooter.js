@@ -12,7 +12,7 @@ class TodoFooter extends Component {
 
 	constructor (props) {
 		super(props);
-		this.completeTasks = this.completeTasks.bind(this);
+		this.getCompleteTasks = this.getCompleteTasks.bind(this);
 		this.incompleteTaskCount = this.incompleteTaskCount.bind(this);
 		this.deleteCompleteTasks = this.deleteCompleteTasks.bind(this);
 	}
@@ -39,15 +39,15 @@ class TodoFooter extends Component {
 	}
 
 	deleteCompleteTasks () {
-		this.completeTasks().forEach(item => TodoActions.destroy(item.id));
+		this.getCompleteTasks().forEach(item => TodoActions.destroy(item.id));
 	}
 
-	completeTasks () {
+	getCompleteTasks () {
 		return this.props.allTodos.filter(item => item.complete);
 	}
 
 	incompleteTaskCount () {
-		return this.props.allTodos.length - this.completeTasks().length;
+		return this.props.allTodos.length - this.getCompleteTasks().length;
 	}	
 
 }

@@ -39,7 +39,7 @@ class TodoApp extends Component {
 	render () {
 		return(
 			<section className={s.root}>
-        <TodoHeader />
+        <TodoHeader allTodos={this.state.allTodos} />
         <MainSection allTodos={this.state.allTodos} />
         <TodoFooter allTodos={this.state.allTodos} />
 			</section>
