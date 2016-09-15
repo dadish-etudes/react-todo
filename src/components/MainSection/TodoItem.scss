@@ -9,26 +9,32 @@
   font-size: 1rem;  
   padding : 0.5rem;
   margin: 0;
-
   border-bottom: $todo-list-seperator;
+  position: relative;
 
   /**
    * Flex settings
    */
-//  align-items : center;
-//  display: flex;
-//  flex-direction : row;
-//  justify-content: space-between;
+  // display: flex;
+  // align-items : center;
+  // flex-direction : row;
+  // justify-content: space-between;
 }
 
 .txt{
+	text-align: left;
 	display: inline-block;
-	margin-left: 1rem;
+	margin-left: 2.75rem;
+	margin-right: 2rem;
 }
 
 .icon{
 	width: 24px;
 	height: 24px;
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
 	&:hover{
 		fill: $clr-silver - #111;
 		cursor: pointer;
@@ -52,8 +58,12 @@
 .delete{
 	width: 20px;
 	height: 20px;
-	float: right;
 	fill: $clr-silver;
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	right: 0.5rem;
+	margin: auto;
 	&:hover{
 		fill: $clr-red - #222;
 		cursor: pointer;
@@ -62,13 +72,13 @@
 		fill: $clr-red - #333;
 	}
 	// show only when parent element is hovered
-	display: none;
+	opacity: 0;
 }
 
 .root{
 	&:hover{
 		.delete{
-			display: block;
+			opacity: 1;
 		}
 	}
 }

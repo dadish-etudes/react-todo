@@ -1,0 +1,34 @@
+
+@import '../variables.scss';
+
+.root {
+	border: $todo-list-seperator;
+	padding: 0.5rem;
+	position: relative;
+	overflow: hidden;
+}
+
+.icon{
+	width: 24px;
+	height: 24px;
+	position: relative;
+	z-index: 1;
+	fill: $clr-silver;
+	&:hover{
+		fill: $clr-silver - #222;
+		cursor: pointer;
+	}	
+}
+
+.input{
+	font-size: 1rem;
+	border: none;
+	display: block;
+	position: absolute;
+	width: 100%;
+	top : 0rem;
+	right : 0rem;
+	bottom : 0rem;
+	left : 0rem;
+	padding-left: 2.75rem;
+}
