@@ -13,11 +13,14 @@
 	border-bottom: 3px solid $clr-white;
 	&:hover{
 		cursor: pointer;
-		border-bottom: 2px solid $clr-green;
+		border-bottom: 2px solid $clr-green - #151515;
 	}
 	&:active{
-		border-bottom: 2px solid $clr-green;
+		border-bottom: 2px solid $clr-green - #151515;
 		color: $clr-green;
+	}
+	&.active{
+		border-bottom: 2px solid $clr-green - #151515;
 	}
 }
 
@@ -35,7 +38,7 @@
 }
 
 .left {
-	color: $clr-green;
+	color: $clr-green - #333;
 }
 
 .filter{

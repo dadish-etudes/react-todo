@@ -12,15 +12,26 @@ import classNames from 'classnames';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './MainSection.css';
 import TodoItem from './TodoItem';
+import TodoConstants from '../../constants/TodoConstants';
 
 class MainSection extends Component {
 
+	getFilteredTasks () {
+		let filteredTodos = this.props.allTodos;
+		if (this.props.filterType === TodoConstants.TODO_FILTER_COMPLETED) {
+			filteredTodos = filteredTodos.filter(item => item.complete);
+		} else if (this.props.filterType === TodoConstants.TODO_FILTER_ACTIVE) {
+			filteredTodos = filteredTodos.filter(item => !item.complete);
+		}
+		return filteredTodos;
+	}
+
 	render () {
-		let allTodos = this.props.allTodos;
+		let filteredTodos = this.getFilteredTasks();
 		let todos = [];
 
-		for (var key in allTodos) {
-			todos.push(<TodoItem key={key} todo={allTodos[key]} />);
+		for (var key in filteredTodos) {
+			todos.push(<TodoItem key={key} todo={filteredTodos[key]} />);
 		}
 
 	  return (

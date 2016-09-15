@@ -9,10 +9,12 @@ import TodoHeader from '../TodoHeader';
 import MainSection from '../MainSection';
 import TodoFooter from '../TodoFooter';
 import TodoStore from '../../stores/TodoStore';
+import TodoConstants from '../../constants/TodoConstants';
 
 function getTodoState() {
   return {
-    allTodos : TodoStore.getAll()
+    allTodos: TodoStore.getAll(),
+    filterType: TodoConstants.TODO_FILTER_ALL,
   };
 }
 
@@ -22,6 +24,7 @@ class TodoApp extends Component {
     super(props);
     this.state = getTodoState();
     this._onChange = this._onChange.bind(this);
+    this.setFilter = this.setFilter.bind(this);
   }
 
   componentWillMount () {
@@ -33,15 +36,19 @@ class TodoApp extends Component {
   }
 
   _onChange () {
-    this.setState(getTodoState());
+    this.setState({allTodos: getTodoState().allTodos});
+  }
+
+  setFilter (filterType) {
+    this.setState({filterType: filterType});
   }
 
 	render () {
 		return(
 			<section className={s.root}>
         <TodoHeader allTodos={this.state.allTodos} />
-        <MainSection allTodos={this.state.allTodos} />
-        <TodoFooter allTodos={this.state.allTodos} />
+        <MainSection allTodos={this.state.allTodos} filterType={this.state.filterType} />
+        <TodoFooter allTodos={this.state.allTodos} filterType={this.state.filterType} setFilter={this.setFilter} />
 			</section>
 		);
 	}
