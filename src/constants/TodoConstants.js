@@ -1,20 +1,21 @@
-const TodoConstants = {
 
-	TODO_CREATE: 'constant-todo-create',
+const TodoConstantsLabels = [
+	'TODO_CREATE',
+	'TODO_DESTROY',
+	'TODO_UPDATE',
+	'TODO_FILTER_ALL',
+	'TODO_FILTER_COMPLETED',
+	'TODO_FILTER_ACTIVE',
+	'TODO_EDIT_ON',
+	'TODO_EDIT_OFF',
+	'TODO_STORE_CHANGE_EVENT',
+	'TODO_LOCAL_STORAGE_KEY',
+];
 
-	TODO_DESTROY: 'constant-todo-destroy',
+const TodoConstants = {};
 
-	TODO_UPDATE: 'constant-todo-update',
-
-	TODO_FILTER_ALL: 'constant-todo-filter-all',
-	
-	TODO_FILTER_COMPLETED: 'constant-todo-filter-completed',
-
-	TODO_FILTER_ACTIVE: 'constant-todo-filter-all-active',
-
-	TODO_EDIT_ON: 'constant-todo-edit-mode-on',
-
-	TODO_EDIT_OFF: 'constant-todo-edit-mode-off',
-};
+TodoConstantsLabels.forEach(function (label, index) {
+	TodoConstants[label] = label;
+});
 
 export default TodoConstants;

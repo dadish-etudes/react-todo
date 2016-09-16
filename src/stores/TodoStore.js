@@ -1,10 +1,11 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import { EventEmitter } from 'events';
 import TodoConstants from '../constants/TodoConstants';
+import TodoLocalStore from './TodoLocalStore';
 
-const CHANGE_EVENT = 'change';
+const CHANGE_EVENT = TodoConstants.TODO_STORE_CHANGE_EVENT;
 
-const _todos = [];
+const _todos = TodoLocalStore.get();
 
 function create(text) {
 	let id = Date.now();
@@ -34,6 +35,10 @@ function update(id, property, value) {
 	item[property] = value;
 }
 
+function updateLocalStore () {
+	TodoLocalStore.set(_todos);
+}
+
 class TodoStore extends EventEmitter {
 
 	constructor () {
@@ -48,6 +53,7 @@ class TodoStore extends EventEmitter {
 
 	emitChange () {
 		this.emit(CHANGE_EVENT);
+		updateLocalStore();
 	}
 
 	addChangeListener (callback) {
