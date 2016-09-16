@@ -11,6 +11,10 @@ const TodoConstants = {
 	TODO_FILTER_COMPLETED: 'constant-todo-filter-completed',
 
 	TODO_FILTER_ACTIVE: 'constant-todo-filter-all-active',
+
+	TODO_EDIT_ON: 'constant-todo-edit-mode-on',
+
+	TODO_EDIT_OFF: 'constant-todo-edit-mode-off',
 };
 
 export default TodoConstants;

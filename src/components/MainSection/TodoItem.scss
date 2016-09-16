@@ -6,11 +6,11 @@
 @import "../variables";
 
 .root {
-  font-size: 1rem;  
-  padding : 0.5rem;
+  font-size: 1rem;
   margin: 0;
   border-bottom: $todo-list-seperator;
-  position: relative;
+	position: relative;
+	overflow: hidden;
 
   /**
    * Flex settings
@@ -21,19 +21,23 @@
   // justify-content: space-between;
 }
 
-.txt{
-	text-align: left;
-	display: inline-block;
-	margin-left: 2.75rem;
-	margin-right: 2rem;
+.label{
+	display: block;
+	padding: 0.5rem;
+	padding-left: 2.75rem;
+	padding-right: 2rem;
+	position: relative;
+	z-index: 1;
 }
 
 .icon{
 	width: 24px;
 	height: 24px;
 	position: absolute;
+	z-index: 2;
 	top: 0px;
 	bottom: 0px;
+	left: 0.5rem;
 	margin: auto;
 	&:hover{
 		fill: $clr-silver - #111;
@@ -75,7 +79,7 @@
 	opacity: 0;
 }
 
-.root{
+.label{
 	&:hover{
 		.delete{
 			opacity: 1;

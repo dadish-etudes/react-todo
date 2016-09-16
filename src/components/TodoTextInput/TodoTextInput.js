@@ -1,14 +1,14 @@
 /**
- * TodoInputText
+ * TodoTextInput
  */
 
 import React, { Component, PropTypes } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './TodoHeader.scss';
+import s from './TodoTextInput.scss';
 
 const ENTER_KEY_CODE = 13;
 
-class TodoInputText extends Component {
+class TodoTextInput extends Component {
 
 	constructor (props) {
 		super(props);
@@ -17,6 +17,7 @@ class TodoInputText extends Component {
 
 		// bind the methods
 		this._save = this._save.bind(this);
+		this._saveOnBlur = this._saveOnBlur.bind(this);
 		this._onChange = this._onChange.bind(this);
 		this._onKeyDown = this._onKeyDown.bind(this);
 	}
@@ -24,28 +25,15 @@ class TodoInputText extends Component {
 	static propTypes = {
 		id: PropTypes.string,
 		placeholder: PropTypes.string,
+		onBlur: PropTypes.bool,
 		onSave: PropTypes.func.isRequired,
+		autoFocus: PropTypes.bool,
 		value: PropTypes.string
 	};
 
-	render () {
-		return(
-			<input
-				type="text"
-				className={s.input}
-				id={this.props.id}
-				placeholder={this.props.placeholder}
-				//onBlur={this._save}
-				onChange={this._onChange}
-				onKeyDown={this._onKeyDown}
-				value={this.state.value}
-				autoFocus={true}
-			/>
-		);
-	}
-
 	_save () {
 		this.props.onSave(this.state.value);
+		if (this.props.todoItem) return;
 		this.setState({
 			value: ''
 		});
@@ -63,6 +51,26 @@ class TodoInputText extends Component {
 		}
 	}
 
+	_saveOnBlur () {
+		if (!this.props.todoItem) return;
+		this._save();
+	}
+
+	render () {
+		return(
+			<input
+				className={s.root}
+				type="text"
+				placeholder={this.props.placeholder}
+				onBlur={this._saveOnBlur}
+				onChange={this._onChange}
+				onKeyDown={this._onKeyDown}
+				value={this.state.value}
+				autoFocus={this.props.autoFocus}
+			/>
+		);
+	}
+
 }
 
-export default withStyles(s)(TodoInputText);
+export default withStyles(s)(TodoTextInput);

@@ -21,6 +21,15 @@ class TodoActions {
 		});
 	}
 
+	update (id, property, value) {
+		AppDispatcher.handleViewAction({
+			actionType: TodoConstants.TODO_UPDATE,
+			id: id,
+			property: property,
+			value: value
+		});
+	}
+
 	markComplete (id) {
 		this.update(id, 'complete', true);
 	}
@@ -29,12 +38,12 @@ class TodoActions {
 		this.update(id, 'complete', false);
 	}
 
-	update (id, property, value) {
+	updateText (id, text) {
 		AppDispatcher.handleViewAction({
 			actionType: TodoConstants.TODO_UPDATE,
 			id: id,
-			property: property,
-			value: value
+			property: 'text',
+			value: text
 		});
 	}
 

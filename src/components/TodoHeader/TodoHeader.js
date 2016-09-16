@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './TodoHeader.scss';
 import TodoActions from '../../actions/TodoActions';
-import TodoTextInput from './TodoTextInput';
+import TodoTextInput from '../TodoTextInput';
 import IconCheck from 'react-icons/lib/md/check';
 import classNames from 'classnames';
 
@@ -55,9 +55,9 @@ class TodoHeader extends Component {
 			<section className={s.root}>
 			<IconCheck className={classNames(iconCls)} onClick={this.toggleCompleteAll} />
 				<TodoTextInput
-					id="new-todo"
 					placeholder="What needs to be done?"
 					onSave={this.onSave}
+					autoFocus={true}
 				/>
 			</section>
 		);

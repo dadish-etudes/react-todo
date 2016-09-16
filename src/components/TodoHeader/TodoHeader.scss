@@ -3,15 +3,19 @@
 
 .root {
 	border: $todo-list-seperator;
-	padding: 0.5rem;
 	position: relative;
 	overflow: hidden;
+	font-size: 1rem;
 }
 
 .icon{
 	width: 24px;
 	height: 24px;
-	position: relative;
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0.5rem;
+	margin: auto;
 	z-index: 1;
 	fill: $clr-silver;
 	&:hover{
@@ -25,17 +29,4 @@
 	&:hover{
 		fill: $clr-green - #222;
 	}	
-}
-
-.input{
-	font-size: 1rem;
-	border: none;
-	display: block;
-	position: absolute;
-	width: 100%;
-	top : 0rem;
-	right : 0rem;
-	bottom : 0rem;
-	left : 0rem;
-	padding-left: 2.75rem;
 }
