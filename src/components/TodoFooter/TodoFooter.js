@@ -8,6 +8,11 @@ import s from './TodoFooter.scss';
 import classNames from 'classnames';
 import TodoActions from '../../actions/TodoActions';
 import TodoConstants from '../../constants/TodoConstants';
+import history from '../../core/history';
+
+const PATH_ALL = '/';
+const PATH_ACTIVE = '/active/';
+const PATH_COMPLETED = '/completed/';
 
 class TodoFooter extends Component {
 
@@ -19,6 +24,8 @@ class TodoFooter extends Component {
 		this.filterAll = this.filterAll.bind(this);
 		this.filterActive = this.filterActive.bind(this);
 		this.filterCompleted = this.filterCompleted.bind(this);
+		this.onLocationChange = this.onLocationChange.bind(this);
+		history.listen(this.onLocationChange);
 	}
 
 	deleteCompleteTasks () {
@@ -34,15 +41,31 @@ class TodoFooter extends Component {
 	}
 
 	filterAll () {
-		this.props.setFilter(TodoConstants.TODO_FILTER_ALL);
+		history.push(PATH_ALL);
 	}
 
 	filterActive () {
-		this.props.setFilter(TodoConstants.TODO_FILTER_ACTIVE);
+		history.push(PATH_ACTIVE);
 	}
 
 	filterCompleted () {
-		this.props.setFilter(TodoConstants.TODO_FILTER_COMPLETED);
+		history.push(PATH_COMPLETED);
+	}
+
+	onLocationChange (event) {
+		let path = event.pathname;
+		let filter;
+		if (path === PATH_ALL) {
+			filter = TodoConstants.TODO_FILTER_ALL;
+		} else if (path === PATH_ACTIVE) {
+			filter = TodoConstants.TODO_FILTER_ACTIVE;
+		} else if (path === PATH_COMPLETED) {
+			filter = TodoConstants.TODO_FILTER_COMPLETED;
+		} else {
+			filter = false;
+		}
+		if (!filter) return;
+		this.props.setFilter(filter);
 	}
 
 	render () {

@@ -46,7 +46,7 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <TodoApp />
+        {this.props.children}
         <Footer />
       </div>
     );

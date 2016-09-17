@@ -11,18 +11,14 @@ import TodoFooter from '../TodoFooter';
 import TodoStore from '../../stores/TodoStore';
 import TodoConstants from '../../constants/TodoConstants';
 
-function getTodoState() {
-  return {
-    allTodos: TodoStore.getAll(),
-    filterType: TodoConstants.TODO_FILTER_ALL,
-  };
-}
-
 class TodoApp extends Component {
 
   constructor(props) {
     super(props);
-    this.state = getTodoState();
+    this.state = {
+      allTodos: TodoStore.getAll(),
+      filterType: props.filter || TodoConstants.TODO_FILTER_ALL,
+    };
     this._onChange = this._onChange.bind(this);
     this.setFilter = this.setFilter.bind(this);
   }
@@ -36,7 +32,7 @@ class TodoApp extends Component {
   }
 
   _onChange () {
-    this.setState({allTodos: getTodoState().allTodos});
+    this.setState({allTodos: TodoStore.getAll()});
   }
 
   setFilter (filterType) {
